@@ -5,3 +5,7 @@ export interface EventsDB {
 	startdate: Date,
 	enddate: Date
 }
+
+export interface GetEventDBResponse {
+	data: EventsDB[]
+}
