@@ -5,7 +5,7 @@ const calendarEvents = require("../services/calendarEvents");
 //Get the events
 router.get('/', async function (request, response, next) {
 	try {
-		response.json(await calendarEvents.getMultiple(request.query.page));
+		response.json(await calendarEvents.getMultiple());
 	} catch (error) {
 		console.error('Error while getting calendar events', error.message);
 		next(error);
