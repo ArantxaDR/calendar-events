@@ -1,4 +1,4 @@
-import React, { ChangeEvent, createRef, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 
 import { Box, Button } from '@mui/material';
 import Modal from '@mui/material/Modal';
@@ -23,9 +23,8 @@ const style = {
 
 
 
-export function ModalComponent({ open, setOpen, selectedEvent }: any): JSX.Element {
+export function ModalComponent({ open, setOpen, selectedEvent, setSelectedEvent }: any): JSX.Element {
 
-	//const [selectedEvent, setSelectedEvent] = useState<EventsDB>();
 	const [title, setTitle] = useState<string>('');
 	const [description, setDescription] = useState<string>('');
 	const [start, setStart] = useState<Date | null>();
@@ -51,21 +50,29 @@ export function ModalComponent({ open, setOpen, selectedEvent }: any): JSX.Eleme
 		setDescription(event.target.value);
 	}
 
-	const updateEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
-		let eventToUpdate: EventsDB = {
+	const modifySelectedEvent = () => {
+		let eventToModify: EventsDB = {
 			id: selectedEvent.id,
 			title: title,
 			description: description,
 			startdate: (start !== undefined && start !== null) ? start : new Date(),
 			enddate: (end !== undefined && end !== null) ? end : new Date(),
 		};
+		return eventToModify;
+	}
+
+	const updateEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
+		let eventToUpdate: EventsDB = modifySelectedEvent();
 		eventsService.updatEvent(eventToUpdate);
 	};
+
+	const createEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
+		let eventToAdd: EventsDB = modifySelectedEvent();
+		eventsService.addEvent(eventToAdd);
+	};
+
 	const deleteEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
 		eventsService.deleteEvent(selectedEvent.id);
-	};
-	const createEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
-		console.log("create")
 	};
 
 	return (
@@ -83,7 +90,7 @@ export function ModalComponent({ open, setOpen, selectedEvent }: any): JSX.Eleme
 							}} />
 						<DatepickerComponent label="End Date" value={end}
 							handleChange={(newValue) => {
-								setStart(newValue);
+								setEnd(newValue);
 							}} />
 					</div>
 					<div className='btn-container'>

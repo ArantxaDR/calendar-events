@@ -47,6 +47,8 @@ function App() {
   const handleDateSelect = (selectInfo: DateSelectArg) => {
     console.log("empty event");
     let emptyEvent = {} as EventsDB;
+    emptyEvent.title = "";
+    emptyEvent.description = "";
     emptyEvent.startdate = selectInfo.start;
     emptyEvent.enddate = selectInfo.start;
     showModal(emptyEvent);
@@ -70,7 +72,7 @@ function App() {
         <h1>estamos probando</h1>
       </header>
       <main>
-        <ModalComponent open={open} setOpen={setOpen} selectedEvent={selectedEvent} />
+        <ModalComponent open={open} setOpen={setOpen} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} />
         <FullCalendar
           plugins={[dayGridPlugin, interactionPlugin]}
           initialView="dayGridMonth"
