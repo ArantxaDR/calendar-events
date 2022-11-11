@@ -1,0 +1,81 @@
+@import 'src/styles/_colors.scss';
+@import 'src/styles/_devices.scss';
+
+.main-container {
+  height: 100%;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+  }
+
+  &__results {
+    height: 100%;
+  }
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  background: $color-white;
+  height: 100%;
+
+  @media screen and (min-width: $screen-sm) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .MuiTypography-subtitle2 {
+    color: $color-primary;
+  }
+
+  &__left-container {
+    padding: 1rem;
+    background: $color-white;
+
+    @media screen and (min-width: $screen-sm) {
+      margin-left: auto;
+      width: 25%;
+    }
+  }
+
+  &__main-container {
+    padding: 1rem;
+    background: $color-white;
+
+    @media screen and (min-width: $screen-sm) {
+      width: 50%;
+    }
+
+    .tabs-container {
+      margin-bottom: 2rem;
+    }
+
+    @media screen and (min-width: $screen-lg) {
+      min-width: calc(40rem - 2rem + 64px);
+    }
+  }
+
+  &__right-container {
+    padding: 1rem;
+    background: $color-white;
+
+    @media screen and (min-width: $screen-sm) {
+      margin-right: auto;
+      width: 25%;
+    }
+  }
+}
+
+.box-container {
+  margin-bottom: 1.6rem;
+
+  .MuiTypography-h6 {
+    color: $color-primary;
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+}

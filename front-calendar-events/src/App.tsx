@@ -46,12 +46,11 @@ function App() {
 
   const handleDateSelect = (selectInfo: DateSelectArg) => {
     console.log("empty event");
-    // let emptyEvent = {} as EventsDB;
-    // emptyEvent.startdate = selectInfo.start;
-    // emptyEvent.enddate = selectInfo.start;
-    // showModal(emptyEvent);
+    let emptyEvent = {} as EventsDB;
+    emptyEvent.startdate = selectInfo.start;
+    emptyEvent.enddate = selectInfo.start;
+    showModal(emptyEvent);
   }
-
 
   const handleEventClick = (clickInfo: EventClickArg) => {
     let event = events.find((obj) => {
@@ -86,3 +85,5 @@ function App() {
 }
 
 export default App;
+
+

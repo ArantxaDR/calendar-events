@@ -18,7 +18,7 @@ export function ModalHeader(props: Props): JSX.Element {
 		<section className="modal-header-container">
 			{title && (
 				<Typography variant="h6">
-					{title}
+					{"Event details"}
 				</Typography>
 			)}
 			{onClose && (
