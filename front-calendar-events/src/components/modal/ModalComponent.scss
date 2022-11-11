@@ -11,7 +11,16 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+
+	.MuiButton-containedPrimary {
+		background-color: $color-contrast;
+
+		&:hover {
+			background-color: $color-hover;
+		}
+	}
 }
+
 
 .error {
 	color: $color-contrast;

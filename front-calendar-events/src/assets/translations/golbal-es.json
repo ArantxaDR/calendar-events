@@ -1,6 +1,8 @@
 {
 	"header": {
-		"title": "Calendario de eventos"
+		"title": "Calendario de eventos",
+		"english": "Inglés",
+		"spanish": "Español"
 	},
 	"modal": {
 		"detailstitle": "Detalle del Evento",

@@ -2,11 +2,12 @@
 @import 'src/styles/_devices.scss';
 
 .header {
-	background-color: $color-background;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	background-color: #ebf2f4;
 	font-size: calc(10px + 2vmin);
 	color: $color-secondary;
+	text-align: center;
+
+	.toggle {
+		padding: 0 2.5rem;
+	}
 }

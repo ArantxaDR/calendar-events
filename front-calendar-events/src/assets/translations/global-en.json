@@ -1,6 +1,8 @@
 {
 	"header": {
-		"title": "Calendar schedule"
+		"title": "Calendar schedule",
+		"english": "English",
+		"spanish": "Spanish"
 	},
 	"modal": {
 		"detailstitle": "Event details",
