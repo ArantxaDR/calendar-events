@@ -1,0 +1,22 @@
+{
+	"header": {
+		"title": "Calendario de eventos"
+	},
+	"modal": {
+		"detailstitle": "Detalle del Evento",
+		"title": "Título",
+		"description": "Descripción",
+		"startdate": "Fecha inicio",
+		"enddate": "Fecha fin",
+		"create": "Nuevo evento",
+		"update": "Actualizar",
+		"delete": "Borrar"
+	},
+	"validation": {
+		"title": "El título no puede estar vacío",
+		"date": "Por favor, introduzca una fecha correcta"
+	},
+	"footer": {
+		"message": "Hecho por ArantxaDR"
+	}
+}

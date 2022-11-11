@@ -8,6 +8,7 @@ import { ModalHeader } from './header/ModalHeader';
 import './ModalComponent.scss';
 import { DatepickerComponent } from '../shared/components/datepicker/DatePicker';
 import { EventsDB } from '../../interfaces/eventsDB.interface';
+import { useTranslation } from 'react-i18next';
 
 const style = {
 	display: 'flex',
@@ -25,6 +26,7 @@ const style = {
 
 export function ModalComponent({ open, setOpen, selectedEvent, setSelectedEvent }: any): JSX.Element {
 
+	const [t] = useTranslation("global");
 	const [title, setTitle] = useState<string>('');
 	const [description, setDescription] = useState<string>('');
 	const [start, setStart] = useState<Date | null>();
@@ -92,26 +94,26 @@ export function ModalComponent({ open, setOpen, selectedEvent, setSelectedEvent 
 		<>
 			<Modal open={open} onClose={handleOpenClose}>
 				<Box sx={style}>
-					<ModalHeader title="Events details" onClose={handleOpenClose} />
+					<ModalHeader title={t("modal.detailstitle")} onClose={handleOpenClose} />
 					<div className='container'>
 						<div className='title-container'>
-							<InputComponent id="outlined-required" label="Title" value={title} handleChange={handleInputTitle} name="txtTitle" />
-							{validation ? <small className='error'>Title can't be empty</small> : ''}
+							<InputComponent id="outlined-required" label={t("modal.title")} value={title} handleChange={handleInputTitle} name="txtTitle" />
+							{validation ? <small className='error'>{t("validation.title")}</small> : ''}
 						</div>
-						<InputComponent label="Description" multiline={true} rows={2} handleChange={handleInputDescription} value={description} name="txtTitle" />
+						<InputComponent label={t("modal.description")} multiline={true} rows={2} handleChange={handleInputDescription} value={description} name="txtTitle" />
 						<div className="dates-container">
-							<DatepickerComponent label="Start Date" value={start}
+							<DatepickerComponent label={t("modal.startdate")} value={start}
 								handleChange={handleStartDateChange} />
-							{validation ? <small className='error'>Please enter a valid date</small> : null}
-							<DatepickerComponent label="End Date" value={end}
+							{validation ? <small className='error'>{t("validation.date")}</small> : null}
+							<DatepickerComponent label={t("modal.enddate")} value={end}
 								handleChange={handleEndDateChange} />
-							{validation ? <small className='error'>Please enter a valid date</small> : null}
+							{validation ? <small className='error'>{t("validation.date")}</small> : null}
 						</div>
 					</div>
 					<div className='btn-container'>
-						<Button variant="contained" onClick={createEvent} name="Create" >Create</Button>
-						<Button variant="contained" onClick={updateEvent} name="Update" >Update</Button>
-						<Button variant="contained" color="error" onClick={deleteEvent} name="Delete" >Delete</Button>
+						<Button variant="contained" onClick={createEvent} name="Create" >{t("modal.create")}</Button>
+						<Button variant="contained" onClick={updateEvent} name="Update" >{t("modal.update")}</Button>
+						<Button variant="contained" color="error" onClick={deleteEvent} name="Delete" >{t("modal.delete")}</Button>
 					</div>
 				</Box>
 

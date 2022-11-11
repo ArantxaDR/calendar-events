@@ -1,6 +1,10 @@
 import { TextField } from "@mui/material";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
+import 'dayjs/locale/es';
+import { useTranslation } from 'react-i18next';
+
 import './DatePicker.scss';
 
 interface Props {
@@ -12,15 +16,16 @@ interface Props {
 
 export function DatepickerComponent(props: Props): JSX.Element {
 	const { label, value, disabled, handleChange } = props;
+	const [t, i18n] = useTranslation("global");
 
 	const handleChangeDate = (newDate: Date | null): void => {
 		handleChange(newDate);
 	};
 	return (
 		<div className="datepicker-component">
-			<LocalizationProvider dateAdapter={AdapterDateFns} >
+			<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={i18n.language} >
 
-				<DatePicker
+				<DateTimePicker
 					label={label}
 					value={value}
 					disabled={disabled}

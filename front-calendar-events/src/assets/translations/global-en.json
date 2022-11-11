@@ -1,0 +1,22 @@
+{
+	"header": {
+		"title": "Calendar schedule"
+	},
+	"modal": {
+		"detailstitle": "Event details",
+		"title": "Title",
+		"description": "Description",
+		"startdate": "Start date",
+		"enddate": "End date",
+		"create": "Create",
+		"update": "Update",
+		"delete": "Delete"
+	},
+	"validation": {
+		"title": "Title can't be empty",
+		"date": "Please enter a valid date"
+	},
+	"footer": {
+		"message": "Made by ArantxaDR"
+	}
+}

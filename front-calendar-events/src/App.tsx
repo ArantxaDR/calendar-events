@@ -4,13 +4,17 @@ import { eventsService } from './services/dbService';
 import { EventsDB } from './interfaces/eventsDB.interface';
 import FullCalendar, { EventInput, DateSelectArg, EventClickArg } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import listPlugin from '@fullcalendar/list';
+import timegridplugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import ModalComponent from "./components/modal/ModalComponent";
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import { useTranslation } from 'react-i18next';
+import esLocale from '@fullcalendar/core/locales/es';
 
 function App() {
-
+  const [t, i18n] = useTranslation("global");
   const [events, setEvents] = useState<EventsDB[]>([])
   const [eventsInput, setEventsInput] = useState<EventInput[]>([])
   const [selectedEvent, setSelectedEvent] = useState<EventsDB>()
@@ -74,13 +78,20 @@ function App() {
       <main className='main'>
         <ModalComponent open={open} setOpen={setOpen} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} />
         <FullCalendar
-          plugins={[dayGridPlugin, interactionPlugin]}
+          plugins={[dayGridPlugin, listPlugin, timegridplugin, interactionPlugin]}
           initialView="dayGridMonth"
           events={eventsInput}
           selectable={true}
           editable={true}
           select={handleDateSelect}
           eventClick={handleEventClick}
+          locale={i18n.language}
+          locales={[esLocale]}
+          headerToolbar={{
+            start: 'prevYear,prev,today,next,nextYear', // will normally be on the left. if RTL, will be on the right
+            center: 'title',
+            end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth', // will normally be on the right. if RTL, will be on the left
+          }}
         /></main>
       <Footer />
     </div>
