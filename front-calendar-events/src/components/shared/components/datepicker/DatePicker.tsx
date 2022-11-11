@@ -2,11 +2,11 @@ import { TextField } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import './DatePicker.scss';
+
 interface Props {
 	label: string;
 	disabled?: boolean;
 	value: Date | null | undefined;
-
 	handleChange: (value: Date | null) => void;
 }
 

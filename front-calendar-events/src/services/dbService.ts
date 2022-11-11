@@ -12,6 +12,7 @@ class DbService {
 	}
 
 	updatEvent = (event: EventsDB) => {
+		//console.log("update: " + event.title);
 		const eventsApi = 'http://localhost:3001/calendar-events/';
 		const headers = {
 			'Content-Type': 'application/json',
@@ -37,9 +38,9 @@ class DbService {
 
 	}
 
-	deleteEvent = (event: EventsDB) => {
+	deleteEvent = (eventId: number) => {
 		const eventsApi = 'http://localhost:3001/calendar-events/';
-		const addResponse = axios.delete<any>(eventsApi + event.id).then((response) =>
+		const addResponse = axios.delete<any>(eventsApi + eventId).then((response) =>
 			response.data);
 
 		return addResponse;

@@ -8,7 +8,6 @@ import { InputLabel } from '@mui/material';
 
 interface Props {
 	error?: boolean;
-	helperText?: string;
 	InputLabelProps?: object;
 	label?: string;
 	multiline?: boolean;
@@ -23,7 +22,6 @@ interface Props {
 export function InputComponent(props: Props): JSX.Element {
 	const {
 		value,
-		helperText,
 		handleChange,
 		handleBlur,
 		error,
@@ -47,7 +45,6 @@ export function InputComponent(props: Props): JSX.Element {
 				id={name}
 				value={value}
 				type={type || 'text'}
-				helperText={helperText}
 				error={error}
 				onChange={handleChange}
 				onBlur={handleBlur}

@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { ChangeEvent, createRef, useEffect, useState } from 'react';
 
 import { Box, Button } from '@mui/material';
 import Modal from '@mui/material/Modal';
@@ -26,42 +26,43 @@ const style = {
 export function ModalComponent({ open, setOpen, selectedEvent }: any): JSX.Element {
 
 	//const [selectedEvent, setSelectedEvent] = useState<EventsDB>();
+	const [title, setTitle] = useState<string>('');
+	const [description, setDescription] = useState<string>('');
 	const [start, setStart] = useState<Date | null>();
 	const [end, setEnd] = useState<Date | null>();
-
-	let refTitle = createRef<HTMLInputElement>();
-	let refDescription = createRef<HTMLInputElement>();
-	let refId = createRef<HTMLInputElement>();
 
 	useEffect(() => {
 		if (selectedEvent !== undefined) {
 			setStart(selectedEvent.startdate);
 			setEnd(selectedEvent.enddate);
+			setTitle(selectedEvent.title);
+			setDescription(selectedEvent.description);
 		}
 	}, [selectedEvent])
-
-
-
-
 
 	const handleOpenClose = () => {
 		setOpen(!open);
 	}
 
-
+	const handleInputTitle = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		setTitle(event.target.value);
+	}
+	const handleInputDescription = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		setDescription(event.target.value);
+	}
 
 	const updateEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
 		let eventToUpdate: EventsDB = {
-			id: (refId.current?.value !== undefined) ? parseInt(refId.current.value) : 0,
-			title: (refTitle.current?.value !== undefined) ? refTitle.current.value : "",
-			description: (refDescription.current?.value !== undefined) ? refDescription.current.value : "",
+			id: selectedEvent.id,
+			title: title,
+			description: description,
 			startdate: (start !== undefined && start !== null) ? start : new Date(),
 			enddate: (end !== undefined && end !== null) ? end : new Date(),
 		};
 		eventsService.updatEvent(eventToUpdate);
 	};
 	const deleteEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
-		console.log("delete")
+		eventsService.deleteEvent(selectedEvent.id);
 	};
 	const createEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
 		console.log("create")
@@ -73,9 +74,8 @@ export function ModalComponent({ open, setOpen, selectedEvent }: any): JSX.Eleme
 				<Box sx={style}>
 					<ModalHeader title="Events details" onClose={handleOpenClose} />
 					<div className='input-container'>
-						<input type="hidden" value={selectedEvent?.id} ref={refId} />
-						<InputComponent label="Title" value={selectedEvent?.title || ""} name="txtTitle" />
-						<InputComponent label="Description" multiline={true} rows={3} value={selectedEvent?.description || ""} name="txtTitle" />
+						<InputComponent label="Title" value={title} handleChange={handleInputTitle} name="txtTitle" />
+						<InputComponent label="Description" multiline={true} rows={3} handleChange={handleInputDescription} value={description} name="txtTitle" />
 						<DatepickerComponent label="Start Date" value={start}
 							handleChange={(newValue) => {
 								setStart(newValue);
@@ -84,11 +84,12 @@ export function ModalComponent({ open, setOpen, selectedEvent }: any): JSX.Eleme
 						<DatepickerComponent label="End Date" value={end}
 							handleChange={(newValue) => {
 								setStart(newValue);
-
 							}} />
-						<Button onClick={updateEvent} className="button" name="Update" />
-						<Button onClick={deleteEvent} className="button" name="Delete" />
-						<Button onClick={createEvent} className="button" name="Create" />
+					</div>
+					<div className='btn-container'>
+						<Button variant="contained" onClick={createEvent} name="Create" >Create</Button>
+						<Button variant="contained" onClick={updateEvent} name="Update" >Update</Button>
+						<Button variant="contained" color="error" onClick={deleteEvent} name="Delete" >Delete</Button>
 					</div>
 				</Box>
 
