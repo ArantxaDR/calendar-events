@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 
 import TextField from '@mui/material/TextField';
 
-// import './InputComponent.scss';
+import './InputComponent.scss';
 import { InputLabel } from '@mui/material';
 // import { FormattedMessage } from 'react-intl';
 
@@ -39,7 +39,7 @@ export function InputComponent(props: Props): JSX.Element {
 		<div className="input-container">
 			{label && (
 				<InputLabel htmlFor={name}>
-					{/* <FormattedMessage id={label} /> */}
+					{label}
 				</InputLabel>
 			)}
 			<TextField

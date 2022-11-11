@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './App.scss';
 import { eventsService } from './services/dbService';
 import { EventsDB } from './interfaces/eventsDB.interface';
 import FullCalendar, { EventInput, DateSelectArg, EventClickArg } from '@fullcalendar/react';
@@ -69,17 +69,18 @@ function App() {
       <header className="App-header">
         <h1>estamos probando</h1>
       </header>
-
-      <ModalComponent open={open} setOpen={setOpen} selectedEvent={selectedEvent} />
-      <FullCalendar
-        plugins={[dayGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth"
-        events={eventsInput}
-        selectable={true}
-        editable={true}
-        select={handleDateSelect}
-        eventClick={handleEventClick}
-      />
+      <main>
+        <ModalComponent open={open} setOpen={setOpen} selectedEvent={selectedEvent} />
+        <FullCalendar
+          plugins={[dayGridPlugin, interactionPlugin]}
+          initialView="dayGridMonth"
+          events={eventsInput}
+          selectable={true}
+          editable={true}
+          select={handleDateSelect}
+          eventClick={handleEventClick}
+        /></main>
+      <footer>eSTE ES EL FOOTER</footer>
     </div>
   );
 }

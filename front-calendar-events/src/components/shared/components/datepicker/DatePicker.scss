@@ -1,0 +1,12 @@
+@import 'src/styles/_colors.scss';
+@import 'src/styles/_devices.scss';
+
+
+.datepicker-component {
+	margin-bottom: 1rem;
+
+	.MuiOutlinedInput-input {
+		height: 30px;
+		padding: 0.5rem 1rem;
+	}
+}

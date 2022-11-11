@@ -3,20 +3,19 @@ import { createTheme } from '@mui/material';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#E9657B',
+      main: '#1e3742',
     },
     secondary: {
-      main: '#666666',
+      main: '#0080be',
     },
     error: {
-      main: '#d32f2f',
+      main: '#fd3e8c',
     },
     background: {
-      default: '#ffffff',
+      default: 'f7ffff',
     },
   },
   typography: {
-    // fontFamily: 'CuatreCasasRegular',
     fontSize: 16,
     fontWeightLight: 300,
     fontWeightRegular: 400,

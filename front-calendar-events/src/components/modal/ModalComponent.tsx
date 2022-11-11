@@ -1,22 +1,22 @@
 import React, { createRef, useEffect, useState } from 'react';
 
-import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { Box, Button, TextField } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import Modal from '@mui/material/Modal';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { EventsDB } from '../../interfaces/eventsDB.interface';
 import { eventsService } from '../../services/dbService';
-import { InputComponent } from '../shared/components/InputComponent';
+import { InputComponent } from '../shared/components/input/InputComponent';
 import { ModalHeader } from './header/ModalHeader';
+import './ModalComponent.scss';
+import { DatepickerComponent } from '../shared/components/datepicker/DatePicker';
+import { EventsDB } from '../../interfaces/eventsDB.interface';
 
 const style = {
 	position: 'absolute',
 	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: 450,
-	bgcolor: 'white',
-	border: '2px solid #000',
+	width: 500,
+	bgcolor: '#f7ffff',
+	border: '2px solid #0080be',
 	boxShadow: 24,
 	p: 3,
 };
@@ -60,41 +60,36 @@ export function ModalComponent({ open, setOpen, selectedEvent }: any): JSX.Eleme
 		};
 		eventsService.updatEvent(eventToUpdate);
 	};
+	const deleteEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
+		console.log("delete")
+	};
+	const createEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
+		console.log("create")
+	};
 
 	return (
 		<>
 			<Modal open={open} onClose={handleOpenClose}>
 				<Box sx={style}>
-					<ModalHeader title="details.title" onClose={handleOpenClose} />
-
-					<InputComponent label="Title" value={selectedEvent?.title || ""} name="txtTitle" />
-					<InputComponent label="Description" multiline={true} rows={5} value={selectedEvent?.description || ""} name="txtTitle" />
-					<input type="hidden" value={selectedEvent?.id} ref={refId} />
-					{/* Title: <input type="text" defaultValue={selectedEvent?.title} name="txtTitle" ref={refTitle} /><br />
-					Description: <input type="textarea" defaultValue={selectedEvent?.description} ref={refDescription} /><br /> */}
-					<LocalizationProvider dateAdapter={AdapterDayjs}>
-						<DateTimePicker
-							renderInput={(props) => <TextField {...props} />}
-							label="Start Date"
-							value={start}
-							onChange={(newValue) => {
+					<ModalHeader title="Events details" onClose={handleOpenClose} />
+					<div className='input-container'>
+						<input type="hidden" value={selectedEvent?.id} ref={refId} />
+						<InputComponent label="Title" value={selectedEvent?.title || ""} name="txtTitle" />
+						<InputComponent label="Description" multiline={true} rows={3} value={selectedEvent?.description || ""} name="txtTitle" />
+						<DatepickerComponent label="Start Date" value={start}
+							handleChange={(newValue) => {
 								setStart(newValue);
 
-							}}
-						/>
-					</LocalizationProvider><br />
-					<LocalizationProvider dateAdapter={AdapterDayjs}>
-						<DateTimePicker
-							renderInput={(props) => <TextField {...props} />}
-							label="End Date"
-							value={end}
-							onChange={(newValue) => {
-								setEnd(newValue);
-								//console.log(newValue);
-							}}
-						/>
-					</LocalizationProvider><br />
-					<Button onClick={updateEvent} className="button" name="Update" />
+							}} />
+						<DatepickerComponent label="End Date" value={end}
+							handleChange={(newValue) => {
+								setStart(newValue);
+
+							}} />
+						<Button onClick={updateEvent} className="button" name="Update" />
+						<Button onClick={deleteEvent} className="button" name="Delete" />
+						<Button onClick={createEvent} className="button" name="Create" />
+					</div>
 				</Box>
 
 			</ Modal>

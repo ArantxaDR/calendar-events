@@ -1,0 +1,8 @@
+@import 'src/styles/_colors.scss';
+@import 'src/styles/_devices.scss';
+
+.input-container {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
