@@ -23,7 +23,7 @@ export function DatepickerComponent(props: Props): JSX.Element {
 					label={label}
 					value={value}
 					disabled={disabled}
-					onChange={(newValue) => handleChangeDate(newValue!)}
+					onChange={handleChangeDate}
 					renderInput={(params) => <TextField {...params} />}
 				/>
 			</LocalizationProvider>

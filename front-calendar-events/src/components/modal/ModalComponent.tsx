@@ -29,6 +29,7 @@ export function ModalComponent({ open, setOpen, selectedEvent, setSelectedEvent 
 	const [description, setDescription] = useState<string>('');
 	const [start, setStart] = useState<Date | null>();
 	const [end, setEnd] = useState<Date | null>();
+	const [validation, setValidation] = useState(false);
 
 	useEffect(() => {
 		if (selectedEvent !== undefined) {
@@ -45,9 +46,18 @@ export function ModalComponent({ open, setOpen, selectedEvent, setSelectedEvent 
 
 	const handleInputTitle = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		setTitle(event.target.value);
+		setValidation(false);
 	}
 	const handleInputDescription = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		setDescription(event.target.value);
+	}
+	const handleStartDateChange = (newValue: Date | null) => {
+		setStart(newValue);
+		setValidation(false)
+	}
+	const handleEndDateChange = (newValue: Date | null) => {
+		setEnd(newValue);
+		setValidation(false)
 	}
 
 	const modifySelectedEvent = () => {
@@ -68,6 +78,9 @@ export function ModalComponent({ open, setOpen, selectedEvent, setSelectedEvent 
 
 	const createEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
 		let eventToAdd: EventsDB = modifySelectedEvent();
+		if (eventToAdd.title.length === 0 || eventToAdd.startdate > eventToAdd.enddate) {
+			setValidation(true)
+		}
 		eventsService.addEvent(eventToAdd);
 	};
 
@@ -80,18 +93,20 @@ export function ModalComponent({ open, setOpen, selectedEvent, setSelectedEvent 
 			<Modal open={open} onClose={handleOpenClose}>
 				<Box sx={style}>
 					<ModalHeader title="Events details" onClose={handleOpenClose} />
-					<div className='input-container'>
-						<InputComponent label="Title" value={title} handleChange={handleInputTitle} name="txtTitle" />
+					<div className='container'>
+						<div className='title-container'>
+							<InputComponent label="Title" value={title} handleChange={handleInputTitle} name="txtTitle" />
+							{validation ? <small className='error'>Title can't be empty</small> : ''}
+						</div>
 						<InputComponent label="Description" multiline={true} rows={3} handleChange={handleInputDescription} value={description} name="txtTitle" />
-						<DatepickerComponent label="Start Date" value={start}
-							handleChange={(newValue) => {
-								setStart(newValue);
-
-							}} />
-						<DatepickerComponent label="End Date" value={end}
-							handleChange={(newValue) => {
-								setEnd(newValue);
-							}} />
+						<div className="dates-container">
+							<DatepickerComponent label="Start Date" value={start}
+								handleChange={handleStartDateChange} />
+							{validation ? <small className='error'>Please enter a valid date</small> : null}
+							<DatepickerComponent label="End Date" value={end}
+								handleChange={handleEndDateChange} />
+							{validation ? <small className='error'>Please enter a valid date</small> : null}
+						</div>
 					</div>
 					<div className='btn-container'>
 						<Button variant="contained" onClick={createEvent} name="Create" >Create</Button>

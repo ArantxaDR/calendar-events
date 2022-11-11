@@ -10,6 +10,7 @@ interface Props {
 	error?: boolean;
 	InputLabelProps?: object;
 	label?: string;
+	required?: boolean;
 	multiline?: boolean;
 	name?: string;
 	rows?: number;
@@ -25,6 +26,7 @@ export function InputComponent(props: Props): JSX.Element {
 		handleChange,
 		handleBlur,
 		error,
+		required,
 		name,
 		label,
 		type,
@@ -46,6 +48,7 @@ export function InputComponent(props: Props): JSX.Element {
 				value={value}
 				type={type || 'text'}
 				error={error}
+				required={required}
 				onChange={handleChange}
 				onBlur={handleBlur}
 				InputLabelProps={InputLabelProps}
