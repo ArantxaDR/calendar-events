@@ -1,16 +1,14 @@
 import React, { ChangeEvent } from 'react';
 
 import TextField from '@mui/material/TextField';
-
 import './InputComponent.scss';
-import { InputLabel } from '@mui/material';
-// import { FormattedMessage } from 'react-intl';
+
 
 interface Props {
+	id?: string;
 	error?: boolean;
 	InputLabelProps?: object;
 	label?: string;
-	required?: boolean;
 	multiline?: boolean;
 	name?: string;
 	rows?: number;
@@ -22,11 +20,11 @@ interface Props {
 
 export function InputComponent(props: Props): JSX.Element {
 	const {
+		id,
 		value,
 		handleChange,
 		handleBlur,
 		error,
-		required,
 		name,
 		label,
 		type,
@@ -37,18 +35,14 @@ export function InputComponent(props: Props): JSX.Element {
 
 	return (
 		<div className="input-container">
-			{label && (
-				<InputLabel htmlFor={name}>
-					{label}
-				</InputLabel>
-			)}
+
 			<TextField
+				label={label}
 				name={name}
-				id={name}
+				id={id}
 				value={value}
 				type={type || 'text'}
 				error={error}
-				required={required}
 				onChange={handleChange}
 				onBlur={handleBlur}
 				InputLabelProps={InputLabelProps}

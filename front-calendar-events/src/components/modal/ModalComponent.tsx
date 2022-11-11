@@ -10,18 +10,18 @@ import { DatepickerComponent } from '../shared/components/datepicker/DatePicker'
 import { EventsDB } from '../../interfaces/eventsDB.interface';
 
 const style = {
+	display: 'flex',
+	flexDirection: 'column',
 	position: 'absolute',
 	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: 500,
+	width: 'auto',
 	bgcolor: '#f7ffff',
 	border: '2px solid #0080be',
 	boxShadow: 24,
 	p: 3,
 };
-
-
 
 export function ModalComponent({ open, setOpen, selectedEvent, setSelectedEvent }: any): JSX.Element {
 
@@ -95,10 +95,10 @@ export function ModalComponent({ open, setOpen, selectedEvent, setSelectedEvent 
 					<ModalHeader title="Events details" onClose={handleOpenClose} />
 					<div className='container'>
 						<div className='title-container'>
-							<InputComponent label="Title" value={title} handleChange={handleInputTitle} name="txtTitle" />
+							<InputComponent id="outlined-required" label="Title" value={title} handleChange={handleInputTitle} name="txtTitle" />
 							{validation ? <small className='error'>Title can't be empty</small> : ''}
 						</div>
-						<InputComponent label="Description" multiline={true} rows={3} handleChange={handleInputDescription} value={description} name="txtTitle" />
+						<InputComponent label="Description" multiline={true} rows={2} handleChange={handleInputDescription} value={description} name="txtTitle" />
 						<div className="dates-container">
 							<DatepickerComponent label="Start Date" value={start}
 								handleChange={handleStartDateChange} />

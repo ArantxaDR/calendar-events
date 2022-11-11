@@ -19,6 +19,7 @@ export function DatepickerComponent(props: Props): JSX.Element {
 	return (
 		<div className="datepicker-component">
 			<LocalizationProvider dateAdapter={AdapterDateFns} >
+
 				<DatePicker
 					label={label}
 					value={value}
