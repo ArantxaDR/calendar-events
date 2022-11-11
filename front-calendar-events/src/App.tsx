@@ -44,7 +44,7 @@ function App() {
     handleOpenClose();
   }
 
-  const handleDateSelect = () => {
+  const handleDateSelect = (selectInfo: DateSelectArg) => {
     console.log("empty event");
     // let emptyEvent = {} as EventsDB;
     // emptyEvent.startdate = selectInfo.start;
