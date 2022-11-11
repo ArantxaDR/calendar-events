@@ -19,6 +19,7 @@ function App() {
   const [eventsInput, setEventsInput] = useState<EventInput[]>([])
   const [selectedEvent, setSelectedEvent] = useState<EventsDB>()
   const [open, setOpen] = useState(false);
+  const [refreshEvents, setRefreshEvents] = useState(false);
 
   const handleOpenClose = () => {
     setOpen(!open);
@@ -28,7 +29,8 @@ function App() {
     eventsService.getEvent().then((response) => {
       setEvents(response.data);
     })
-  }, [])
+    setRefreshEvents(false);
+  }, [refreshEvents])
 
   useEffect(() => {
     let eventsMapped = events.map((item: EventsDB) => {
@@ -76,7 +78,7 @@ function App() {
     <div className="App">
       <Header />
       <main className='main'>
-        <ModalComponent open={open} setOpen={setOpen} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} />
+        <ModalComponent open={open} setOpen={setOpen} selectedEvent={selectedEvent} setRefreshEvents={setRefreshEvents} />
         <FullCalendar
           plugins={[dayGridPlugin, listPlugin, timegridplugin, interactionPlugin]}
           initialView="dayGridMonth"
@@ -88,9 +90,9 @@ function App() {
           locale={i18n.language}
           locales={[esLocale]}
           headerToolbar={{
-            start: 'prevYear,prev,today,next,nextYear', // will normally be on the left. if RTL, will be on the right
+            start: 'prevYear,prev,today,next,nextYear',
             center: 'title',
-            end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth', // will normally be on the right. if RTL, will be on the left
+            end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
           }}
         /></main>
       <Footer />
