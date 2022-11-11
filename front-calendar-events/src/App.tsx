@@ -45,8 +45,6 @@ function App() {
     setEventsInput(eventsMapped);
   }, [events])
 
-
-
   const showModal = (event: EventsDB) => {
     setSelectedEvent(event);
     handleOpenClose();
@@ -70,9 +68,7 @@ function App() {
     if (event !== undefined) {
       showModal(event);
     }
-
   }
-
 
   return (
     <div className="App">
@@ -89,6 +85,7 @@ function App() {
           eventClick={handleEventClick}
           locale={i18n.language}
           locales={[esLocale]}
+          eventColor="#ff355e"
           headerToolbar={{
             start: 'prevYear,prev,today,next,nextYear',
             center: 'title',
