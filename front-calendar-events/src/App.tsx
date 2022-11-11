@@ -6,6 +6,8 @@ import FullCalendar, { EventInput, DateSelectArg, EventClickArg } from '@fullcal
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import ModalComponent from "./components/modal/ModalComponent";
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 
 function App() {
 
@@ -68,10 +70,8 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>estamos probando</h1>
-      </header>
-      <main>
+      <Header />
+      <main className='main'>
         <ModalComponent open={open} setOpen={setOpen} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} />
         <FullCalendar
           plugins={[dayGridPlugin, interactionPlugin]}
@@ -82,7 +82,7 @@ function App() {
           select={handleDateSelect}
           eventClick={handleEventClick}
         /></main>
-      <footer>eSTE ES EL FOOTER</footer>
+      <Footer />
     </div>
   );
 }
