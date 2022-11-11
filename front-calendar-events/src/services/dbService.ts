@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GetEventDBResponse } from '../interfaces/eventsDB.interface';
+import { EventsDB, GetEventDBResponse } from '../interfaces/eventsDB.interface';
 
 class DbService {
 	getEvent = () => {
@@ -9,6 +9,40 @@ class DbService {
 
 		return getAllEvents;
 
+	}
+
+	updatEvent = (event: EventsDB) => {
+		const eventsApi = 'http://localhost:3001/calendar-events/';
+		const headers = {
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		};
+		const updateResponse = axios.put<any>(eventsApi + event.id, event, { headers }).then((response) =>
+			response.data);
+
+		return updateResponse;
+
+	}
+
+	addEvent = (event: EventsDB) => {
+		const eventsApi = 'http://localhost:3001/calendar-events';
+		const headers = {
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		};
+		const addResponse = axios.post<any>(eventsApi, event, { headers }).then((response) =>
+			response.data);
+
+		return addResponse;
+
+	}
+
+	deleteEvent = (event: EventsDB) => {
+		const eventsApi = 'http://localhost:3001/calendar-events/';
+		const addResponse = axios.delete<any>(eventsApi + event.id).then((response) =>
+			response.data);
+
+		return addResponse;
 	}
 }
 
