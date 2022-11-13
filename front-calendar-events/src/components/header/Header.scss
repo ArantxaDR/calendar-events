@@ -9,5 +9,18 @@
 
 	.toggle {
 		padding: 0 2.5rem;
+
+		.MuiSwitch-switchBase,
+		.Mui-checked {
+			color: $color-hover;
+
+			:hover {
+				background-color: $color-hover;
+			}
+		}
+
+		.MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track {
+			background-color: $color-hover;
+		}
 	}
 }
