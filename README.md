@@ -44,18 +44,18 @@ Dependencies:
 - Assets:
     - Translations: with the language dictionary.
 - Components: 
-        - Calendar
-        - Footer
-        - Header
-        - Modal:
-			- Header
-        - Landing
-        - Shared:
-            - Components:
-				- Button
-				- Datepicker
-				- Input 
-				- Loading
+    - Calendar
+    - Footer
+    - Header
+    - Modal:
+    	- Header
+    - Landing
+    - Shared:
+	- Components:
+		- Button
+		- Datepicker
+		- Input 
+		- Loading
 - Interfaces
 - Services
 - Styles
