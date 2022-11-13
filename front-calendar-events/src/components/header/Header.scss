@@ -8,7 +8,7 @@
 	text-align: center;
 
 	.toggle {
-		padding: 0 2.5rem;
+		padding-left: 2rem;
 
 		.MuiSwitch-switchBase,
 		.Mui-checked {
@@ -24,3 +24,5 @@
 		}
 	}
 }
+
+@media screen and (max-width:$screen-xs) {}

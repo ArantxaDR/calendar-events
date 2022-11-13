@@ -5,17 +5,8 @@
 	margin-top: 1rem;
 
 	.MuiOutlinedInput-input {
-		width: 25vw;
+
 		height: 30px;
 		padding: 0.5rem 1rem;
-	}
-}
-
-@media screen and (max-width: $screen-xs) {
-	.input-container {
-		.MuiOutlinedInput-input {
-			width: 50vw;
-
-		}
 	}
 }

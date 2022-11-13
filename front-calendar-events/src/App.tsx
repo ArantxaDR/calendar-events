@@ -28,9 +28,11 @@ function App() {
   useEffect(() => {
     eventsService.getEvent().then((response) => {
       setEvents(response.data);
+    }).catch(error => {
+      alert(t("error.errormessage"));
     })
     setRefreshEvents(false);
-  }, [refreshEvents])
+  }, [refreshEvents, t])
 
   useEffect(() => {
     let eventsMapped = events.map((item: EventsDB) => {
@@ -51,7 +53,6 @@ function App() {
   }
 
   const handleDateSelect = (selectInfo: DateSelectArg) => {
-    console.log("empty event");
     let emptyEvent = {} as EventsDB;
     emptyEvent.title = "";
     emptyEvent.description = "";

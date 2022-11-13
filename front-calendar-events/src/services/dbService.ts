@@ -11,8 +11,7 @@ class DbService {
 
 	}
 
-	updatEvent = (event: EventsDB) => {
-		//console.log("update: " + event.title);
+	updateEvent = (event: EventsDB) => {
 		const eventsApi = 'http://localhost:3001/calendar-events/';
 		const headers = {
 			'Content-Type': 'application/json',

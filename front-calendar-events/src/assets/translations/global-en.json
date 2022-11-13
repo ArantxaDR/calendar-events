@@ -20,5 +20,8 @@
 	},
 	"footer": {
 		"message": "Made by ArantxaDR"
+	},
+	"error": {
+		"errormessage": "There is an error.Try again later"
 	}
 }

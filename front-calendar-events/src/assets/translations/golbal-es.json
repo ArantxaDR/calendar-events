@@ -20,5 +20,8 @@
 	},
 	"footer": {
 		"message": "Hecho por ArantxaDR"
+	},
+	"error": {
+		"errormessage": "Ha habido un error. Inténtelo de nuevo más tarde"
 	}
 }
