@@ -3,7 +3,7 @@
 Front-end tecnical challenge for Factorial HR.
 Simple calendar application that allows creating, reading, updating, and deleting an event.
 
-## :computer: Arranque del proyecto:
+## :computer: Start the project:
 
 In this project we have 2 folder: back & front.
 
@@ -12,7 +12,7 @@ In this project we have 2 folder: back & front.
 # npm install
 ```
 
--To start the back project in development
+- To start the back project in development
 ```
 # node index.js
 ```
@@ -26,7 +26,6 @@ In this project we have 2 folder: back & front.
 
 Core: 
 - [React & Typescript](https://create-react-app.dev/docs/adding-typescript/)
-    - [React-Router-Dom](https://reactrouter.com/web/guides/quick-start)
 - [Sass](https://sass-lang.com/)
 
 Api comunication:
@@ -36,12 +35,14 @@ Dependencies:
 - [Fullcalendar](https://fullcalendar.io/)
 - [i18next](https://www.i18next.com/)
 - [Material UI](https://mui.com/material-ui/)
-- [Git](https://git-scm.com/)
+- [Express](http://expressjs.com/)
+- [Cors](https://www.npmjs.com/package/cors)
+- [Mysql2](https://www.npmjs.com/package/mysql2)
 
 ## :open_file_folder: Structure:
 
 - Assets:
-    - translations: with the language dictionary.
+    - Translations: with the language dictionary.
 - Components: 
         - Calendar
         - Footer
