@@ -62,5 +62,5 @@ Dependencies:
 
 ## :notebook_with_decorative_cover: Wiki:
 
-To know more about the rpoject, go to [notion](https://arantxa-workspace.notion.site/Calendar-events-documentation-c70317a2dad24c1fadac7eeaaa7aafd1) 
+To know more about the project, go to [notion](https://arantxa-workspace.notion.site/Calendar-events-documentation-c70317a2dad24c1fadac7eeaaa7aafd1) 
 
