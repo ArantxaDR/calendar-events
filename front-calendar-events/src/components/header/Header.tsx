@@ -1,13 +1,13 @@
-import React from 'react'
-import Switch from '@mui/material/Switch';
-import { useTranslation } from 'react-i18next';
-import { Stack, Typography } from '@mui/material';
-import './Header.scss';
+import React, { useState } from 'react';
 
+import { Stack, Typography, Switch } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+
+import './Header.scss';
 
 function Header() {
 	const [t, i18n] = useTranslation("global");
-	const [checked, setChecked] = React.useState(false);
+	const [checked, setChecked] = useState(false);
 
 
 	const handdlerChangeLanguage = (ev: any) => {

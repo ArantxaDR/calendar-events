@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import './App.scss';
-import { eventsService } from './services/dbService';
-import { EventsDB } from './interfaces/eventsDB.interface';
 import FullCalendar, { EventInput, DateSelectArg, EventClickArg } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import listPlugin from '@fullcalendar/list';
 import timegridplugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import esLocale from '@fullcalendar/core/locales/es';
+
+import { useTranslation } from 'react-i18next';
+
+import { eventsService } from './services/dbService';
+import { EventsDB } from './interfaces/eventsDB.interface';
 import ModalComponent from "./components/modal/ModalComponent";
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
-import { useTranslation } from 'react-i18next';
-import esLocale from '@fullcalendar/core/locales/es';
+
+import './App.scss';
 
 function App() {
   const [t, i18n] = useTranslation("global");

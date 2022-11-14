@@ -2,9 +2,9 @@ import { TextField } from "@mui/material";
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-import 'dayjs/locale/es';
 import { useTranslation } from 'react-i18next';
 
+import 'dayjs/locale/es';
 import './DatePicker.scss';
 
 interface Props {

@@ -1,8 +1,8 @@
 import React, { ChangeEvent } from 'react';
 
 import TextField from '@mui/material/TextField';
-import './InputComponent.scss';
 
+import './InputComponent.scss';
 
 interface Props {
 	id?: string;

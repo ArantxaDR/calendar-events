@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState, MouseEvent } from 'react';
 
 import { Box, Button } from '@mui/material';
 import Modal from '@mui/material/Modal';
@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 
 import { eventsService } from '../../services/dbService';
 import { EventsDB } from '../../interfaces/eventsDB.interface';
-import { InputComponent } from '../shared/components/input/InputComponent';
 import { ModalHeader } from './header/ModalHeader';
+import { InputComponent } from '../shared/components/input/InputComponent';
 import { DatepickerComponent } from '../shared/components/datepicker/DatePicker';
 import Loading from '../shared/components/loading/Loading';
 
@@ -73,7 +73,7 @@ export function ModalComponent({ open, setOpen, selectedEvent, setRefreshEvents 
 		return eventToModify;
 	}
 
-	const updateEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
+	const updateEvent = (event: MouseEvent<HTMLButtonElement>) => {
 		try {
 			setLoading(true);
 			let eventToUpdate: EventsDB = modifySelectedEvent();
@@ -93,7 +93,7 @@ export function ModalComponent({ open, setOpen, selectedEvent, setRefreshEvents 
 
 	};
 
-	const createEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
+	const createEvent = (event: MouseEvent<HTMLButtonElement>) => {
 		try {
 			setLoading(true);
 			let eventToAdd: EventsDB = modifySelectedEvent();
@@ -112,7 +112,7 @@ export function ModalComponent({ open, setOpen, selectedEvent, setRefreshEvents 
 		}
 	};
 
-	const deleteEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
+	const deleteEvent = (event: MouseEvent<HTMLButtonElement>) => {
 		try {
 			setLoading(true);
 			eventsService.deleteEvent(selectedEvent.id);
